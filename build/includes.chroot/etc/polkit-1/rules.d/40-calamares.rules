@@ -1,0 +1,9 @@
+// Secura OS Polkit Rules for Calamares Installer
+// Allows authenticated live user or sudoers to execute the system installer
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.policykit.exec" &&
+        action.lookup("program") == "/usr/bin/calamares" &&
+        (subject.isInGroup("sudo") || subject.user == "secura")) {
+        return polkit.Result.YES;
+    }
+});

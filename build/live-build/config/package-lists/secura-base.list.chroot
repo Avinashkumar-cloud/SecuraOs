@@ -1,0 +1,66 @@
+# Core Linux Kernel, Boot, and Base System
+linux-image-amd64
+live-boot
+live-config
+live-config-systemd
+grub-efi-amd64
+grub-pc-bin
+plymouth
+plymouth-themes
+plymouth-x11
+
+# System Services, Input Devices & Administration
+systemd
+systemd-sysv
+sudo
+polkitd
+pkexec
+dbus
+ca-certificates
+curl
+wget
+git
+bash-completion
+htop
+tmux
+nano
+vim-tiny
+pciutils
+usbutils
+libinput-bin
+memtest86+
+xinput
+evtest
+kbd
+
+# Storage, Removable Drives & Filesystems
+udisks2
+gvfs
+gvfs-backends
+gvfs-fuse
+dosfstools
+ntfs-3g
+exfat-fuse
+exfatprogs
+
+# Power Management & Laptop Controls
+acpi
+acpid
+upower
+rfkill
+
+# Networking & Firewall
+network-manager
+network-manager-gnome
+iproute2
+net-tools
+ethtool
+dnsutils
+traceroute
+whois
+iptables
+nftables
+ufw
+wireless-tools
+wpasupplicant
+crda

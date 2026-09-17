@@ -1,0 +1,37 @@
+# ==============================================================================
+# Secura OS — Common Hardware, Firmware, Audio & Peripherals Package List
+# ==============================================================================
+
+# Input Drivers (Keyboards, Mice, Touchpads, Touchscreens)
+xserver-xorg-input-all
+xserver-xorg-input-libinput
+xserver-xorg-input-synaptics
+
+# Graphics & Display Drivers (Intel, AMD, Modesetting, Virtualization)
+xserver-xorg-video-all
+xserver-xorg-video-qxl
+xserver-xorg-video-vmware
+mesa-utils
+libgl1-mesa-dri
+
+# Wireless Wi-Fi, Ethernet & Bluetooth Firmware (Debian non-free-firmware)
+firmware-linux-free
+firmware-misc-nonfree
+firmware-realtek
+firmware-iwlwifi
+firmware-atheros
+firmware-brcm80211
+firmware-intel-sound
+
+# Bluetooth Support & Peripherals
+bluez
+bluez-tools
+blueman
+
+# Audio Subsystem (PipeWire Modern Audio Engine & ALSA)
+pipewire
+pipewire-audio
+wireplumber
+pipewire-pulse
+pipewire-alsa
+alsa-utils

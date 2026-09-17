@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Secura OS — Calamares Installer Setup Hook
+# ==============================================================================
+set -euo pipefail
+
+echo "[+] Secura live-build hook: configuring Calamares installer..."
+
+mkdir -p /etc/calamares/modules
+mkdir -p /usr/share/calamares/branding/secura
+
+# Copy packaging configurations into system locations
+if [ -d "/opt/secura/packaging/calamares" ]; then
+    cp -r /opt/secura/packaging/calamares/settings.conf /etc/calamares/
+    cp -r /opt/secura/packaging/calamares/modules/* /etc/calamares/modules/ 2>/dev/null || true
+    cp -r /opt/secura/packaging/calamares/branding/secura/* /usr/share/calamares/branding/secura/ 2>/dev/null || true
+fi
+
+# Ensure Calamares directories have proper permissions
+chmod 755 /etc/calamares
+chmod 644 /etc/calamares/settings.conf 2>/dev/null || true
+
+echo "[+] Calamares installer configuration complete."

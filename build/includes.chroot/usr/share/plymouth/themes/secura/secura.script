@@ -1,0 +1,61 @@
+# ==============================================================================
+# Secura OS — Futuristic Plymouth Boot Splash Animation Script
+# ==============================================================================
+
+# Background Color: Dark Cyber Slate (#050811)
+Window.SetBackgroundTopColor(0.02, 0.03, 0.07);
+Window.SetBackgroundBottomColor(0.02, 0.03, 0.07);
+
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+
+# Load Logo Image
+logo.orig_image = Image("secura_logo.jpg");
+logo.width = logo.orig_image.GetWidth();
+logo.height = logo.orig_image.GetHeight();
+
+# Scale logo to fit nicely on screen (~220px)
+target_size = 220;
+if (logo.width > 0) {
+    scale = target_size / logo.width;
+    logo.image = logo.orig_image.Scale(logo.width * scale, logo.height * scale);
+} else {
+    logo.image = logo.orig_image;
+}
+
+logo.sprite = Sprite(logo.image);
+logo.x = (screen_width - logo.image.GetWidth()) / 2;
+logo.y = (screen_height - logo.image.GetHeight()) / 2 - 40;
+logo.sprite.SetPosition(logo.x, logo.y, 10);
+logo.sprite.SetOpacity(1.0);
+
+# Status Text Message
+message_sprite = Sprite();
+message_sprite.SetPosition(screen_width / 2, logo.y + logo.image.GetHeight() + 30, 10);
+
+fun message_callback(text) {
+    if (text) {
+        my_image = Image.Text(text, 0.0, 0.94, 1.0, 1.0, "Ubuntu 12");
+        message_sprite.SetImage(my_image);
+        message_sprite.SetX((screen_width - my_image.GetWidth()) / 2);
+    }
+}
+Plymouth.SetUpdateStatusFunction(message_callback);
+
+# Boot Progress Bar (Neon Cyan Outline and Fill)
+progress_box.image = Image.Text("SECURA CYBERSECURITY OS — BOOT SEQUENCE", 0.22, 0.74, 0.97, 0.8, "Ubuntu Bold 11");
+progress_box.sprite = Sprite(progress_box.image);
+progress_box.sprite.SetPosition((screen_width - progress_box.image.GetWidth()) / 2, logo.y + logo.image.GetHeight() + 65, 10);
+
+fun progress_callback(duration, progress) {
+    # Update progress indicator
+    pct = Math.Int(progress * 100);
+    message_callback("INITIALIZING DEFENSIVE SUBSYSTEMS [" + pct + "%]");
+}
+Plymouth.SetBootProgressFunction(progress_callback);
+
+# Quit Animation Handler
+fun quit_callback() {
+    logo.sprite.SetOpacity(0.0);
+}
+Plymouth.SetQuitFunction(quit_callback);

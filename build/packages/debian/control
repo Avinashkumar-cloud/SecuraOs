@@ -1,0 +1,16 @@
+Source: secura-core
+Section: admin
+Priority: optional
+Maintainer: Secura Project Maintainers <maintainers@secura-project.org>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools
+Standards-Version: 4.6.2
+Homepage: https://github.com/secura-os
+
+Package: secura-core
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}, python3-pydantic, python3-yaml, python3-rich, python3-typer, python3-platformdirs
+Description: Secura OS Core Runtime, Scope Management, and CLI Architecture
+ Secura is a curated, Debian-based cybersecurity education and authorized-testing
+ operating system. This package supplies the unified Secura Python core, scope
+ validation engine, structured audit logging with secret redaction, and the
+ 'secura' command line utility.

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install Secura OS
+GenericName=Operating System Installer
+Comment=Install Secura OS permanently to your computer
+Exec=secura-installer
+Icon=system-software-install
+Terminal=false
+Categories=System;Settings;
+StartupNotify=true
+Keywords=install;installer;calamares;secura;setup;

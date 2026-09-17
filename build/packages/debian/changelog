@@ -1,0 +1,5 @@
+secura-core (0.1.0-alpha-1) bookworm; urgency=medium
+
+  * Initial release of Secura OS Core and Scope Management Foundation.
+
+ -- Secura Project Maintainers <maintainers@secura-project.org>  Thu, 17 Sep 2026 12:00:00 +0000

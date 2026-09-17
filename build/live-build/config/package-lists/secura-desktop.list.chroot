@@ -1,0 +1,32 @@
+# X11 Display Server & Drivers
+xorg
+xserver-xorg-video-all
+xserver-xorg-input-all
+
+# XFCE Desktop Environment
+xfce4
+xfce4-goodies
+xfce4-terminal
+xfce4-pulseaudio-plugin
+lightdm
+lightdm-gtk-greeter
+thunar
+thunar-archive-plugin
+mousepad
+ristretto
+galculator
+
+# Web Browsers & Internet
+firefox-esr
+chromium
+
+# Multimedia, Movie Streaming & Media Players
+vlc
+ffmpeg
+gstreamer1.0-plugins-base
+gstreamer1.0-plugins-good
+gstreamer1.0-plugins-bad
+gstreamer1.0-plugins-ugly
+gstreamer1.0-libav
+pavucontrol
+

@@ -1,0 +1,26 @@
+---
+componentName: secura
+
+strings:
+    productName:         "Secura OS"
+    shortProductName:    "Secura"
+    version:             "1.0.0-alpha"
+    shortVersion:        "1.0"
+    versionedName:       "Secura OS 1.0 (Bookworm)"
+    shortVersionedName:  "Secura 1.0"
+    bootloaderEntryName: "Secura Linux"
+    productUrl:          "https://github.com/secura-os"
+    supportUrl:          "https://github.com/secura-os/secura/issues"
+    knownIssuesUrl:      "https://github.com/secura-os/secura/blob/main/docs/troubleshooting.md"
+    releaseNotesUrl:     "https://github.com/secura-os/secura/releases"
+
+images:
+    productLogo:         "logo.png"
+    productIcon:         "icon.png"
+    productWelcome:      "welcome.png"
+
+slideshow:               "show.qml"
+
+style:
+   sidebar: "widget"
+   navigation: "widget"

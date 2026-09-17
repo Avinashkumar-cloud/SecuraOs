@@ -1,0 +1,107 @@
+tools:
+  - name: nmap
+    display_name: "Nmap Network Scanner"
+    category: network-security
+    description: "Network exploration tool, host discovery, and port scanner."
+    purpose: "Identify live hosts on authorized subnets, discover open network ports, and enumerate service versions."
+    risk_level: medium
+    authorization_required: true
+    binary: nmap
+    package: nmap
+    enabled_by_default: true
+    documentation_url: "https://nmap.org/book/man.html"
+    safe_examples:
+      - description: "Ping scan to discover live hosts without port scanning"
+        command: ["nmap", "-sn", "{target}"]
+      - description: "Inspect standard web and SSH ports on authorized host"
+        command: ["nmap", "-p", "22,80,443", "-sV", "{target}"]
+
+  - name: wireshark
+    display_name: "Wireshark Packet Analyzer"
+    category: network-security
+    description: "Interactive graphical network protocol analyzer."
+    purpose: "Inspect captured network traffic, investigate protocol handshakes, and troubleshoot communications."
+    risk_level: low
+    authorization_required: false
+    binary: wireshark
+    package: wireshark
+    enabled_by_default: true
+    documentation_url: "https://www.wireshark.org/docs/"
+    safe_examples:
+      - description: "Open Wireshark graphical interface"
+        command: ["wireshark"]
+
+  - name: tshark
+    display_name: "TShark Packet Capture"
+    category: network-security
+    description: "Terminal-oriented network protocol analyzer."
+    purpose: "Capture and dissect packet streams directly in the terminal or export to PCAP."
+    risk_level: low
+    authorization_required: false
+    binary: tshark
+    package: tshark
+    enabled_by_default: true
+    documentation_url: "https://www.wireshark.org/docs/man-pages/tshark.html"
+    safe_examples:
+      - description: "Capture 10 packets on loopback interface"
+        command: ["tshark", "-i", "lo", "-c", "10"]
+
+  - name: nikto
+    display_name: "Nikto Web Vulnerability Scanner"
+    category: web-security
+    description: "Web server assessment scanner for outdated software, configuration issues, and dangerous files."
+    purpose: "Audit web servers for common vulnerabilities, misconfigurations, and outdated components."
+    risk_level: high
+    authorization_required: true
+    binary: nikto
+    package: nikto
+    enabled_by_default: false
+    documentation_url: "https://github.com/sullo/nikto/wiki"
+    safe_examples:
+      - description: "Basic web server scan against local test port"
+        command: ["nikto", "-h", "http://127.0.0.1:8080"]
+
+  - name: bandit
+    display_name: "Bandit Python Code Auditor"
+    category: code-auditing
+    description: "Static security analyzer designed to find common security issues in Python code."
+    purpose: "Scan source code for hardcoded secrets, unsafe deserialization, shell injection, and weak cryptography."
+    risk_level: low
+    authorization_required: false
+    binary: bandit
+    package: bandit
+    enabled_by_default: true
+    documentation_url: "https://bandit.readthedocs.io/"
+    safe_examples:
+      - description: "Audit current directory recursively"
+        command: ["bandit", "-r", "."]
+
+  - name: exiftool
+    display_name: "ExifTool Metadata Analyzer"
+    category: forensics
+    description: "Read, write, and inspect metadata in image, audio, video, and document files."
+    purpose: "Analyze forensic artifact metadata, GPS geolocation tags, and camera properties without modifying original media."
+    risk_level: low
+    authorization_required: false
+    binary: exiftool
+    package: libimage-exiftool-perl
+    enabled_by_default: true
+    documentation_url: "https://exiftool.org/"
+    safe_examples:
+      - description: "Read all metadata from an image file"
+        command: ["exiftool", "sample.jpg"]
+
+  - name: lynis
+    display_name: "Lynis System Security Auditor"
+    category: system-hardening
+    description: "Security auditing and compliance scanning tool for Unix-based systems."
+    purpose: "Evaluate system hardening status, firewall rules, user permissions, and configuration compliance."
+    risk_level: low
+    authorization_required: false
+    binary: lynis
+    package: lynis
+    enabled_by_default: true
+    documentation_url: "https://cisofy.com/lynis/"
+    safe_examples:
+      - description: "Perform quick local system audit"
+        command: ["lynis", "audit", "system", "--quick"]

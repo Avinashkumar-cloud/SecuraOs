@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Secura OS Cyber Shield
+Description=High-tech futuristic boot splash theme for Secura Cybersecurity OS
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/secura
+ScriptFile=/usr/share/plymouth/themes/secura/secura.script

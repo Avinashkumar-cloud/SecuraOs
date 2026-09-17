@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Secura OS — Live User & Desktop Permissions Hook
+# ==============================================================================
+set -euo pipefail
+
+echo "[+] Secura live-build hook: configuring live session user 'secura'..."
+
+# Create live user if not present
+if ! id -u secura >/dev/null 2>&1; then
+    useradd -m -s /bin/bash -c "Secura Live User" secura
+    # Default password 'secura'
+    echo "secura:secura" | chpasswd
+fi
+
+# Ensure necessary groups exist and assign user
+for grp in sudo netdev audio video plugdev input cdrom autologin; do
+    groupadd -f "${grp}"
+    usermod -aG "${grp}" secura
+done
+
+# Passwordless sudo for live session user to ease setup/testing
+echo "secura ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/01-secura-live
+chmod 0440 /etc/sudoers.d/01-secura-live
+
+# Set executable bits on desktop files and scripts
+chmod +x /usr/local/bin/secura-installer 2>/dev/null || true
+if [ -f "/etc/skel/Desktop/install-secura.desktop" ]; then
+    chmod +x /etc/skel/Desktop/install-secura.desktop
+fi
+
+# Pre-populate live user desktop
+mkdir -p /home/secura/Desktop
+cp -r /etc/skel/. /home/secura/ 2>/dev/null || true
+chown -R secura:secura /home/secura
+
+echo "[+] Secura live session user configuration complete."

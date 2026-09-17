@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Secura OS — Graphical Installer Elevation & Launcher Wrapper
+# ==============================================================================
+set -euo pipefail
+
+if ! command -v calamares >/dev/null 2>&1; then
+    echo "[!] Error: Calamares installer binary not found on this system." >&2
+    exit 1
+fi
+
+# Ensure graphical display is available
+if [ -z "${DISPLAY:-}" ] && [ -z "${WAYLAND_DISPLAY:-}" ]; then
+    echo "[!] Error: No graphical display detected. Please launch from a desktop session." >&2
+    exit 1
+fi
+
+# Allow local root to access the X11 display server for the installer GUI
+if [ -n "${DISPLAY:-}" ] && command -v xhost >/dev/null 2>&1; then
+    xhost +si:localuser:root >/dev/null 2>&1 || true
+fi
+
+# Launch Calamares through pkexec or direct execution if already root
+if [ "$(id -u)" -eq 0 ]; then
+    exec calamares -d 2>&1 | tee -a /var/log/calamares.log
+else
+    exec pkexec calamares -d 2>&1 | tee -a /var/log/calamares.log
+fi

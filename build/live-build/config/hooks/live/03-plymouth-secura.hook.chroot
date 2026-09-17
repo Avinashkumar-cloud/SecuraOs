@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Secura OS — Plymouth Boot Theme Configuration Hook
+# ==============================================================================
+set -euo pipefail
+
+echo "[+] Secura live-build hook: configuring Plymouth boot animation..."
+
+if [ -d "/usr/share/plymouth/themes/secura" ]; then
+    if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+        plymouth-set-default-theme secura || true
+        echo "[+] Default Plymouth theme set to 'secura'."
+    fi
+fi
+
+echo "[+] Plymouth boot theme hook complete."

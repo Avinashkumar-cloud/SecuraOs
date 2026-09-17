@@ -1,0 +1,12 @@
+// Secura OS Polkit Rules
+// Enforces least privilege: allows authenticated sudo/wheel users to perform system tasks
+// without running desktop sessions or Secura Center as root.
+
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.debian.apt.update" ||
+         action.id == "org.freedesktop.NetworkManager.network-control" ||
+         action.id == "org.freedesktop.udisks2.filesystem-mount") &&
+        subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});

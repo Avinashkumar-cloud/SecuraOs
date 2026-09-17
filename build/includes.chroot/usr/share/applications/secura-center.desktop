@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Secura Center
+GenericName=Cybersecurity Control Center
+Comment=Manage authorized testing scopes, tool catalogs, safe labs, and reports
+Exec=secura-center
+Icon=security-high
+Terminal=false
+Categories=System;Security;Settings;
+Keywords=security;cybersecurity;scope;nmap;audit;labs;
+StartupNotify=true
