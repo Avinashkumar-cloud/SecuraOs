@@ -61,12 +61,12 @@ audit.jsonl
 reports/generated/
 .secura/
 
-# OS Build Artifacts (ISO & Debian package outputs)
+# OS Build Artifacts (Keep heavy ISOs ignored)
 *.iso
 *.iso.sha256
 *.iso.zsync
-*.deb
-dist/
+!dist/
+!dist/secura-core_*.deb
 binary/
 chroot/
 live-build/binary/
